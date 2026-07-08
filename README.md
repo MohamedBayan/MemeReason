@@ -1,4 +1,4 @@
-# MemeReason
+# MemeReason 
 
 Code and data for two papers on explainable meme understanding with
 thinking-based multimodal LLMs:
