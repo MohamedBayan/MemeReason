@@ -1,8 +1,20 @@
 # MemeReason
 
-Code and data for the paper **"Adapting Reinforcement Learning with
-Chain-of-Thought Supervision for Explainable Detection of Hateful and
-Propagandistic Memes"** ([arXiv:2606.15307](https://arxiv.org/abs/2606.15307)).
+Code and data for two papers on explainable meme understanding with
+thinking-based multimodal LLMs:
+
+- **"Can Thinking Models Think to Detect Hateful Memes?"**
+  (WWW Companion 2026, [doi:10.1145/3774905.3795465](https://doi.org/10.1145/3774905.3795465)) —
+  introduces GRPO-based post-training with task-specific rewards for
+  thinking-based MLLMs on the English Hateful Memes benchmark, showing that
+  reinforcement learning improves both classification and explanation quality.
+- **"Adapting Reinforcement Learning with Chain-of-Thought Supervision for
+  Explainable Detection of Hateful and Propagandistic Memes"**
+  ([arXiv:2606.15307](https://arxiv.org/abs/2606.15307)) — the journal
+  extension: cross-lingual generalization to Arabic propagandistic memes
+  (ArMeme, 4-class), a multi-LLM fine-grained annotation pipeline, distilled
+  chain-of-thought supervision, thinking-length regularization (R_think), and
+  self-supervised GRPO with consensus pseudo-labels.
 
 We post-train thinking-based multimodal LLMs (Qwen3-VL-8B-Thinking) to jointly
 classify memes and explain their decisions, using SFT warm-up followed by GRPO
@@ -19,7 +31,8 @@ generating natural-language explanations.
 
 | Resource | Link |
 | --- | --- |
-| Paper | [arXiv:2606.15307](https://arxiv.org/abs/2606.15307) |
+| Journal paper | [arXiv:2606.15307](https://arxiv.org/abs/2606.15307) |
+| Conference paper (WWW Companion 2026) | [doi:10.1145/3774905.3795465](https://doi.org/10.1145/3774905.3795465) |
 | Extended datasets (explanations, fine-grained labels, distilled CoT) | [QCRI/MemeReason](https://huggingface.co/datasets/QCRI/MemeReason) |
 | Explanation-augmented benchmarks (prior work) | [QCRI/MemeXplain](https://huggingface.co/datasets/QCRI/MemeXplain) |
 | Original benchmarks | [Hateful Memes](https://ai.meta.com/tools/hatefulmemes/), [QCRI/ArMeme](https://huggingface.co/datasets/QCRI/ArMeme) |
@@ -75,7 +88,12 @@ python data_prep/prepare_seq_cls_data.py --task hateful \
     --output_dir data/formatted/hateful/seq_cls
 ```
 
-## Reproducing the paper
+## Reproducing the papers
+
+Steps 1-3 on the `hateful` task reproduce the WWW Companion paper; the journal
+extension adds the `armeme` task, the fine-grained annotation pipeline, the
+R_think reward, and steps 4-5. Section numbers below refer to the journal
+paper.
 
 ### 1. Zero-shot and CoT baselines (Table 8)
 
@@ -175,7 +193,20 @@ the corresponding full-test-set metrics in `scores/`.
 
 ## Citation
 
+If you use this code or the datasets, please cite both papers — the WWW
+Companion paper that introduced the method, and the journal extension that
+this repository fully reproduces:
+
 ```bibtex
+@inproceedings{kmainasi2026can,
+  title     = {Can Thinking Models Think to Detect Hateful Memes?},
+  author    = {Kmainasi, Mohamed Bayan and Kutlu, Mucahid and Ezzat Shahroor, Ali
+               and Hasnat, Abul and Alam, Firoj},
+  booktitle = {Companion Proceedings of the ACM Web Conference 2026},
+  pages     = {935--944},
+  year      = {2026}
+}
+
 @article{kmainasi2026memereason,
   title   = {Adapting Reinforcement Learning with Chain-of-Thought Supervision
              for Explainable Detection of Hateful and Propagandistic Memes},
