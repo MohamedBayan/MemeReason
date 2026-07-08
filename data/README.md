@@ -22,10 +22,22 @@ Fine-grained labels (protected categories, attack types) originate from
 
 ## ArMeme (Arabic, 4-class)
 
-1. Download [QCRI/ArMeme](https://huggingface.co/datasets/QCRI/ArMeme) — it
-   contains the images.
-2. Place / export the images so that the `image` field of the released dataset
-   (the original ArMeme relative path) resolves against `--image_root`.
+The images are embedded in the `armeme` config of QCRI/MemeReason (and also
+distributed in [QCRI/ArMeme](https://huggingface.co/datasets/QCRI/ArMeme)).
+Export them to disk once so the training files can reference them by path:
+
+```python
+from pathlib import Path
+from datasets import load_dataset
+
+for split, ds in load_dataset("QCRI/MemeReason", "armeme").items():
+    for row in ds:
+        path = Path("data/armeme") / row["id"]
+        path.parent.mkdir(parents=True, exist_ok=True)
+        row["image"].save(path)
+```
+
+Then pass `--image_root data/armeme` to the data_prep scripts.
 
 ## Unlabeled pools (self-supervised GRPO)
 

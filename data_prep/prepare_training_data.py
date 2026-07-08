@@ -90,12 +90,16 @@ def load_split_local(source_dir, split):
 
 
 def load_split_hub(repo, config, split):
-    from datasets import load_dataset
+    from datasets import Image, load_dataset
 
     try:
         ds = load_dataset(repo, config, split=split)
     except ValueError:
         return None
+    # The armeme config embeds the images; the training files reference them
+    # on disk instead (via --image_root and the id field), so skip decoding.
+    if isinstance(ds.features.get("image"), Image):
+        ds = ds.remove_columns(["image"])
     return [dict(row) for row in ds]
 
 
