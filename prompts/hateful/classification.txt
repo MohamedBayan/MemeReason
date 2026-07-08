@@ -1,0 +1,21 @@
+I will provide you with memes and the text extracted from these images.  
+Your task is to classify each meme as one of the following: 'hateful' or 'not-hateful'.
+
+Guidelines:
+- A meme is considered hateful if it attacks, insults, or demeans people based on protected characteristics such as:
+  - race or ethnicity
+  - nationality or immigration status
+  - religion or caste
+  - sex or gender identity
+  - sexual orientation
+  - disability or disease
+- The attack can be explicit (e.g., slurs, direct insults, threats) or implicit (e.g., stereotypes, sarcasm, coded language).
+- A meme is considered not-hateful if:
+  - It does not target any protected group.
+  - It criticizes individuals, organizations, or situations unrelated to protected traits.
+  - It contains humor, irony, or social commentary without hateful intent.
+
+Return only the label in this exact format:
+Label: hateful
+or
+Label: not-hateful

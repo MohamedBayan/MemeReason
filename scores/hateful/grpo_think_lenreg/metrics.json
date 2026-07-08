@@ -1,0 +1,17 @@
+{
+  "accuracy": 0.8205,
+  "precision_macro": 0.8109217119720096,
+  "recall_macro": 0.802,
+  "f1_macro": 0.8058724398076136,
+  "precision_weighted": 0.8189303140021018,
+  "recall_weighted": 0.8205,
+  "f1_weighted": 0.8191944436258162,
+  "bertscore_precision": 0.7710056304931641,
+  "bertscore_recall": 0.7896251082420349,
+  "bertscore_f1": 0.7800440788269043,
+  "rouge1": 0.6138181192293912,
+  "rouge2": 0.36705004510762673,
+  "rougeL": 0.4550646554765233,
+  "bleu": 0.2819581803448468,
+  "meteor": 0.5221210445586492
+}

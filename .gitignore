@@ -1,0 +1,18 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# artifacts produced by the pipeline
+checkpoints/
+logs/
+runs/
+data/formatted/
+data/hateful_memes/
+data/armeme/
+results/*
+!results/samples/
+wandb/
+
+# credentials
+.env
+*.env

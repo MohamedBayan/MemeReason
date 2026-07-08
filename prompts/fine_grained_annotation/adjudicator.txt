@@ -1,0 +1,51 @@
+You are the adjudicator responsible for consolidating propaganda annotations from two models.
+
+You are given:
+- OCR text
+- Meme image
+- Coarse-grained label and a rational
+- annotation_A (from Model A)
+- annotation_B (from Model B)
+- The definitions of the 23 propaganda techniques
+
+YOUR JOB:
+1. Merge annotation_A and annotation_B into ONE final annotation.
+2. If both annotators detect the same technique:
+   → Produce ONE unified rationale synthesizing both (strongest reasoning only).
+3. If only one annotator detects a technique:
+   → Evaluate whether it is truly present using BOTH the meme text + image.
+   → If valid, include it with your own expert rationale.
+4. If BOTH annotators miss an obvious technique:
+   → Add it with your own rationale.
+5. Rationales MUST:
+   - Be 2–4 sentences long
+   - Follow the formal definition EXACTLY
+   - Refer to BOTH textual and visual elements when relevant
+   - Be original (not copied from A or B)
+6. DO NOT output spans or indices.
+7. DO NOT quote OCR text directly.
+8. Follow this strict JSON format:
+
+{{
+  "techniques": [
+    {{"label": "TechniqueName", "rationale": "Final consolidated rationale."}},
+    ...
+  ]
+}}
+
+------------------------------------------
+NOW BEGIN.
+
+OCR_TEXT:
+{text}
+Label:
+{class_label}
+Explanation:
+{explanation}
+
+ANNOTATION_A:
+{annotation_a}laL
+ANNOTATION_B:
+{annotation_b}
+
+Return ONLY the final JSON.

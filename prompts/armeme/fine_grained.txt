@@ -1,0 +1,135 @@
+You are an expert annotator for a fine-grained Arabic propaganda classification task.
+I will provide you with an image (which may or may not be a meme) and the text extracted from it.
+
+Defining Propaganda:
+Propaganda is any communication that deliberately misrepresents symbols and/or entities, appealing to emotions and prejudices while bypassing rational thought, to influence its audience toward a specific goal.
+
+Your task has three steps:
+
+------------------------------------------------------------
+1. Identify the propaganda technique(s) used in the meme.
+
+Use the following standardized technique list. Each technique includes a short definition to guide your annotation. Select all techniques that apply. If none apply, return ["none"].
+
+PROPAGANDA TECHNIQUE DEFINITIONS:
+
+1. name_calling  
+   Assigning insulting or emotionally charged labels to a person or group.
+
+2. reductio_ad_hitlerum  
+   Comparing the target to Nazis, Hitler, or other extremely negative symbols.
+
+3. casting_doubt  
+   Undermining credibility rather than addressing the argument.
+
+4. appeal_to_hypocrisy  
+   Responding to criticism by pointing out inconsistency instead of addressing the claim.
+
+5. smears  
+   Attacking the moral character of a person/group with strongly negative claims.
+
+6. flag_waving  
+   Appealing to national pride, patriotism, or group loyalty to justify an idea.
+
+7. appeal_to_authority  
+   Using the opinion of an authority figure as proof without proper reasoning.
+
+8. bandwagon  
+   Suggesting an idea is valid because “everyone” supports it.
+
+9. appeal_to_values  
+   Linking the message to shared values (tradition, religion, morality).
+
+10. appeal_to_fear  
+   Using fear, threat, or prejudice to influence the audience.
+
+11. straw_man  
+   Misrepresenting the opponent’s argument to make it easier to attack.
+
+12. red_herring  
+   Introducing irrelevant information to distract from the main issue.
+
+13. whataboutism  
+   Redirecting discussion to a different issue instead of responding.
+
+14. causal_oversimplification  
+   Reducing a complex situation to a single cause.
+
+15. black_and_white_fallacy  
+   Presenting only two options when more exist.
+
+16. slippery_slope  
+   Claiming one small action will inevitably lead to extreme consequences.
+
+17. slogans  
+   Using short, emotionally charged, memorable phrases.
+
+18. thought_terminating_cliche  
+   Using clichés or fixed phrases to shut down debate (“It is what it is,” etc.).
+
+19. appeal_to_time_pressure  
+   Creating false urgency (“act now before it’s too late”).
+
+20. loaded_language  
+   Using emotionally charged words to provoke strong feelings.
+
+21. obfuscation  
+   Using vague, confusing, or ambiguous language to hide meaning.
+
+22. exaggeration_minimisation  
+   Overstating or understating events beyond reality.
+
+23. repetition  
+   Repeating the same message to increase impact or memorability.
+
+24. other  
+   Any persuasive technique not listed above.
+
+------------------------------------------------------------
+2. Determine the FINAL 4-class label.
+
+You must assign exactly ONE label from:
+- not-meme
+- other
+- not-propaganda
+- propaganda
+
+Label definitions (4 classes):
+1) not-meme
+   - The image does not follow the definition of a meme.
+
+2) other
+   - The image can be defined as a meme but falls under ANY of these criteria:
+     1. Memes that rely on nudity and offensive content, unless the target of the offense is a famous, political, or religious entity.
+     2. Memes that rely on numbers or figures to construct meaning.
+     3. Memes that show explicit nudity.
+     4. Memes that explicitly use offensive words.
+     5. Memes that are in a different language (not Arabic).
+     6. Memes that you could not understand due to the dialect it was written in, poor font size, or for any other reason.
+   - Note: Memes might contain words that have an implicitly offensive meaning, or offensive words may be aimed at social, religious, or political groups. In these cases, do NOT automatically assign "other"; proceed to decide whether it is propaganda.
+
+3) not-propaganda
+   - The image is a meme and does NOT contain propaganda techniques.
+
+4) propaganda
+   - The image is a meme and DOES contain propaganda techniques (from the list above) to influence attitudes toward a person/group/entity/idea.
+
+Decision order (important):
+1) If it is not a meme -> not-meme
+2) Else if it is a meme and meets any "other" criterion -> other
+3) Else -> decide between propaganda vs not-propaganda
+
+Consistency rule between techniques and final label:
+- If final label is propaganda: Techniques must contain at least one technique (not ["none"]).
+- If final label is not-propaganda OR not-meme OR other: Techniques must be ["none"] (and do not add per-technique rationales).
+
+------------------------------------------------------------
+3. Output format (strict):
+
+Techniques: ["technique1", "technique2", ...]  # or ["none"]
+technique1: <short rationale describing how it appears in the meme>
+technique2: <short rationale describing how it appears in the meme>
+...
+
+Label: <one of: not-meme | other | not-propaganda | propaganda>
+Explanation: <brief explanation summarizing your judgment>

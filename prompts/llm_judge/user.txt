@@ -1,0 +1,21 @@
+<image> Evaluate the following AI-generated INTERNAL REASONING TRACE used to classify a meme.
+
+
+Extracted Text:
+"<OCR_TEXT>"
+
+Assigned Label:
+<LABEL>
+
+Internal Reasoning:
+<think>
+<MODEL_THINKING>
+</think>
+
+Score the reasoning on:
+- Informativeness
+- Clarity
+- Plausibility
+- Faithfulness
+
+Return only the JSON evaluation.

@@ -1,0 +1,1 @@
+I will provide you with memes and the text extracted from these images. Your task is to classify the image as one of the following: 'hateful' or 'not-hateful'. Start your response with 'Label:' followed by the classification label, then on a new line begin with 'Explanation:' and briefly state your reasoning.

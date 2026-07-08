@@ -1,0 +1,34 @@
+You will analyze a MEME for fine-grained propaganda detection.
+
+You are given:
+- OCR text extracted from the meme + meme image
+- A binary label of the meme with an explanation
+- The definitions of the 23 propaganda techniques
+
+YOUR TASK:
+1. Identify ALL propaganda techniques present in the meme.
+2. For EACH technique:
+   - Write a SHORT rationale (1–4 sentences)
+   - Explain clearly how the meme (text + image) uses this technique.
+   - Ensure rationale matches the formal definition of the technique.
+3. Rationales must be precise, theory-correct, and non-emotional.
+4. Return ONLY the following JSON format:
+
+{{
+  "techniques": [
+    {{"label": "TechniqueName", "rationale": "Explanation in 1-3 sentences."}},
+    ...
+  ]
+}}
+
+------------------------------------------
+NOW BEGIN.
+
+OCR_TEXT:
+{text}
+Label:
+{class_label}
+Explanation:
+{explanation_en}
+
+Return ONLY the JSON output.

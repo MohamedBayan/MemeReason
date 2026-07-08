@@ -1,0 +1,118 @@
+You are an expert annotator for an Arabic meme classification dataset with 4 classes.
+
+I will give you:
+1. The input (image + extracted text).
+2. The gold label (ground-truth: one of 4 classes).
+3. The gold explanation (human-annotated reasoning for why the label is correct).
+4. The fine-grained propaganda techniques (if applicable).
+5. The annotation guidelines.
+
+Your task:
+Generate a private thinking process that could have led an annotator to that label and explanation, while also considering the fine-grained propaganda techniques when present.
+
+Important rules about the thinking:
+- The thinking must be detailed, step-by-step, and logically grounded in the guidelines.
+- The thinking should **implicitly** identify:
+  - Whether the input satisfies the definition of a meme (image + added text + communicative intent).
+  - If it's not a meme, explain why (e.g., plain photo, logo, screenshot without memetic elements).
+  - Whether the meme contains any persuasive or manipulative message aimed at shaping opinions or emotions.
+  - If propaganda is present, which specific propaganda technique(s) are being used.
+  - If the meme is neither propaganda nor not-propaganda but falls into "other" category.
+- Do NOT copy or restate the gold explanation sentence-by-sentence. Use it only as a weak signal to ensure consistency.
+- Do NOT justify anything by saying "because the label is X". Pretend you do not know the gold label when reasoning.
+- Do NOT mention that you were given the label or explanation.
+
+Focus on intermediate reasoning:
+- First, restate the meme content in your own words:
+  - Summarize the Arabic text (including dialectal elements).
+  - Describe the visual scene, symbols, facial expressions, or contextual cues.
+  - Explain how the text–image combination creates a message.
+- Evaluate whether it is a *meme*:
+  - Does it have added text over an image?
+  - Does the combination create humor, commentary, sarcasm, critique, or a clear message?
+  - If it clearly does NOT satisfy the meme structure (e.g., plain photo, logo, screenshot of article), mark as not-meme.
+- If it IS a meme, determine which category it belongs to:
+  - **Propaganda**: Uses persuasive or manipulative techniques to shape opinions, emotions, or beliefs about specific topics (political, religious, ideological, social).
+  - **Not-propaganda**: Is a meme but uses humor, personal opinion, or descriptive commentary without persuasive intent.
+  - **Other**: Is a meme but doesn't fit clearly into propaganda or not-propaganda (e.g., ambiguous intent, mixed signals, cultural references without clear stance).
+- If propaganda techniques appear:
+  - Check for attempts to shape opinions, emotions, or beliefs.
+  - Look for emotional manipulation (fear, pride, moral superiority, anger).
+  - Look for exaggeration, oversimplification, demonization, clichés, slogans, or framing tactics.
+  - Look for techniques targeted at political, religious, ideological, national, or social groups.
+  - Consider the specific propaganda techniques provided if any.
+- If no propaganda is present:
+  - Explain why the content is more consistent with humor, cultural commentary, personal venting, or neutral opinion.
+
+The <think> block must be fully self-contained and should not explicitly mention the final label, except optionally in its final concluding line.
+
+Output format:
+1. First, output ONLY the private reasoning in a <think> block.
+2. After the </think> block, output the final label exactly as one of:
+   Label: propaganda
+   Label: not-propaganda
+   Label: not-meme
+   Label: other
+
+Do NOT output anything else.
+
+---
+
+Annotation Guidelines
+
+**Labels (4 classes):**
+
+1. **propaganda**: A meme that uses propaganda techniques to influence opinions or emotions about a specific person, group, or idea. It employs persuasive tactics like emotional manipulation, exaggeration, fear appeals, loaded language, or other propaganda techniques.
+
+2. **not-propaganda**: A meme that does NOT use propaganda techniques. It may be humorous, contain personal opinions, social commentary, or entertainment without attempting to manipulate the viewer's beliefs or emotions in a biased way.
+
+3. **not-meme**: The input is NOT a meme. It could be a plain photo, logo, screenshot without memetic elements, advertisement, or any image that doesn't combine image and text to create humor, commentary, or a cultural message.
+
+4. **other**: A meme that doesn't clearly fit into propaganda or not-propaganda categories. This includes ambiguous content, mixed signals, cultural references without clear stance, or edge cases.
+
+**What is a Meme:**
+A meme is an image with added text meant to convey humor, sarcasm, commentary, or a short clear message. Its meaning comes from the interaction between the image and the text.
+
+Key properties:
+1. Text added to the image.
+2. The meaning emerges from image + text together.
+3. Expressive faces, cultural symbols, or visual cues may reinforce the message.
+4. Memes can critique, satirize, or highlight social/political issues.
+
+**What is Propaganda:**
+Propaganda is content produced to influence opinions or emotions in a biased or manipulative way. It uses specific persuasive techniques to push the audience toward accepting or rejecting a person, group, policy, or idea.
+
+Propaganda Techniques (24):
+1. Name Calling / Labeling
+2. Reductio ad Hitlerum
+3. Casting Doubt
+4. Appeal to Hypocrisy
+5. Smears
+6. Flag-Waving
+7. Appeal to Authority
+8. Bandwagon
+9. Appeal to Values
+10. Appeal to Fear / Prejudice
+11. Straw Man
+12. Red Herring
+13. Whataboutism
+14. Causal Oversimplification
+15. Black-and-White Fallacy
+16. Slippery Slope
+17. Slogans
+18. Thought-Terminating Cliché
+19. Appeal to Time Pressure
+20. Loaded Language
+21. Obfuscation / Vagueness / Confusion
+22. Exaggeration or Minimisation
+23. Repetition
+24. Other
+
+---
+
+Now generate for this case:
+
+Text extracted: {text}
+Label: {label}
+Techniques: {techniques}
+Explanation: {explanation}

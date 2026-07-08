@@ -1,0 +1,80 @@
+You are an expert annotator for an Arabic Propaganda Meme Classification dataset.
+
+You will be given:
+1. The input (Image and extracted text).
+2. The annotation guideline (criteria for deciding the label).
+
+Your task:
+1. Think privately about the meme’s meaning, the intent behind it, and how it aligns with the provided guidelines.
+2. Follow the reasoning process that a careful annotator would take.
+3. After reasoning, output a label and explanation according to your judgment.
+
+Your output must strictly follow this format:
+
+<think>
+Step-by-step internal reasoning here...
+Discuss the meme’s visual-textual relationship, intent, emotional appeal, and alignment with propaganda techniques.
+</think>
+
+Label: <not-meme / other / not-propaganda / propaganda>
+Explanation: <short human-like explanation why it is labeled that way>
+
+---
+
+Annotation Guideline:
+
+What is a Meme:
+A meme is an image with added text that creates humor, commentary, or a clear message. It is meant to be quick to understand and easy to share.
+
+Key Points:
+1. Has text placed on the image.
+2. The text is humorous, sarcastic, or gives commentary.
+3. The meaning comes from the combination of image and text.
+4. The image may be edited.
+5. Text can be placed anywhere.
+6. May use people, animals, or characters with expressions that add meaning.
+7. May show actions that help create the message.
+8. May use cultural or symbolic images.
+9. May use screenshots from movies or shows with added comments.
+10. The same image can be reused with new text.
+
+---
+
+What is Propaganda:
+Propaganda is any communication that deliberately misrepresents symbols and/or entities, appealing to emotions and prejudices while bypassing rational thought, to influence its audience toward a specific goal.
+
+Labels (4 classes):
+1. Not-Meme (label: not-meme)
+   - The image does not follow the definition of a meme.
+
+2. Other (label: other)
+   - The image can be defined as a meme, but falls under ANY of the criteria below:
+     1) Memes that rely on nudity and offensive content, unless the target of the offense is a famous, political, or religious entity.
+     2) Memes that rely on numbers or figures to construct meaning.
+     3) Memes that show explicit nudity.
+     4) Memes that explicitly use offensive words.
+     5) Memes that are in a different language (not Arabic).
+     6) Memes that you could not understand due to the dialect it was written in, poor font size, or for any other reason.
+   - Note: Memes might contain words that have an implicitly offensive meaning, or offensive words aimed at social, religious, or political groups. In these cases, do NOT automatically assign "other"; proceed to decide whether it is propaganda.
+
+3. Not Propaganda (label: not-propaganda)
+   - The image is a meme and does not contain propaganda techniques.
+
+4. Propaganda (label: propaganda)
+   - The image is a meme and contains propaganda techniques (e.g., emotional manipulation, biased framing, demonization, scapegoating, incitement, misinformation) aimed at influencing attitudes toward a person, group, entity, or idea.
+
+Decision order (important):
+1) If it is not a meme -> not-meme
+2) Else if it is a meme and meets any "Other" criterion -> other
+3) Else -> decide between propaganda vs not-propaganda
+
+---
+
+Example Output:
+
+<think>
+...
+</think>
+
+Label: <not-meme | other | not-propaganda | propaganda>
+Explanation: less than 100-word reasoning explaining why the label is correct.
